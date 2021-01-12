@@ -1,4 +1,4 @@
-// set attributes on elements : class and inline styles
+// rendering classes dynamically
 
 import React, { Component } from "react";
 
@@ -8,16 +8,24 @@ class Counter extends Component {
   };
 
   render() {
+    // let classes = "badge m-2 badge-";
+    // classes += this.state.count === 0 ? "warning" : "primary";
+    // these two lines are purely about determining the class for className
+    // they are polluting the render method
+    // we can encapsulate these lines in seperate method getBadgeClasses
+
     return (
       <div>
-        <span style={{ fontSize: 30 }} className="badge badge-primary m-2">
-          {this.formatCount()}
-        </span>
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button className="btn btn-secondary btn-sm">Increment</button>
       </div>
-
-      // for using inline styles we need double curly braces
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
   }
 
   formatCount() {
