@@ -1,30 +1,37 @@
-// set attributes on elements
+// set attributes on elements : class and styles
 
 import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
     count: 0,
-    imgageUrl: "https://picsum.photos/200",
-    // this will generate a random 200 x 200 image
+  };
+
+  // in jsx we have a style attribute which can be used to style objects
+  // define a property called styles and reference it in jsx expression
+  // the properties of this object are css properties in camel case notation
+  styles = {
+    fontSize: 15, // react will convert this to '10px'
+    fontWeight: "bold",
   };
 
   render() {
     return (
       <div>
-        <img src={this.state.imgageUrl} alt="" />
-        <span>{this.formatCount()}</span>
-        <button>Increment</button>
+        <span style={this.styles} className="badge badge-primary m-2">
+          {this.formatCount()}
+        </span>
+        <button className="btn btn-secondary btn-sm">Increment</button>
       </div>
-
-      // we cannnot set attributes in double quotes as it will be rendered as plain text
-      // instead we can define a property in the state object and use it
+      // since these jsx expressions get compiled to plain js objects
+      // so we cannot use a class attribute because it is a reserved keyword in js
+      // instead we use className attribute
     );
   }
 
   formatCount() {
     const { count } = this.state;
-    return count === 0 ? <h3>Zero</h3> : count;
+    return count === 0 ? "Zero" : count;
   }
 }
 
