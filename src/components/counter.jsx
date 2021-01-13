@@ -1,4 +1,7 @@
-// handling events
+// Binding event handlers
+
+// Previously this was referencing the window object
+// Due to strict mode being enabled, it showed 'this' as undefined
 
 import React, { Component } from "react";
 
@@ -7,11 +10,25 @@ class Counter extends Component {
     count: 1,
   };
 
-  handleIncrement() {
+  // // Solution 1: using constructor
+  // // In the constructor we have access to this keyword
+  // // so we can make use of the bind method on our handleIncrement function / object
+  // // the bind method will return new instance of the function with 'this' referencing
+  // // to current object
+  // constructor() {
+  //   super();
+  //   this.handleIncrement = this.handleIncrement.bind(this);
+  // }
+
+  // handleIncrement() {
+  //   console.log("Increment Clicked", this);
+  // }
+
+  // Solution 2: Convert the function into arrow function
+  // Arrow functions do not rebind the this keyword; they inherit it
+  handleIncrement = () => {
     console.log("Increment Clicked", this);
-  } // Output: Increment Clicked undefined
-  // this is not defined here so we do not have the access to the state property
-  // so we need to bind this function with this in the constructor
+  };
 
   render() {
     return (
