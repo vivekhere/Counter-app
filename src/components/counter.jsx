@@ -1,47 +1,40 @@
-// rendering lists
+// conditional rendering
+
+// conditional statements like if else cannot be used in jsx expression
+
+// To use condition -
+// 1. we can use the and && operator in jsx expression
+// OR
+// 2. we can create a function and make use of conditional statements in that function
+// and dynamically call that function in jsx expression using {}.
 
 import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
     count: 0,
-    tags: ["tag1", "tag2", "tag3"],
+    tags: [],
   };
 
-  // to render the list of items
-  // we can use map method to map each element in the tags array into react element
+  renderTags() {
+    if (this.state.tags.length === 0) return "2. There are no tags";
+
+    return (
+      <ul>
+        {this.state.tags.map((tag) => (
+          <li key={tag}>{tag}</li>
+        ))}
+      </ul>
+    );
+  }
 
   render() {
     return (
       <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-          {this.state.tags.map((tag) => (
-            <li key={tag}>{tag}</li>
-          ))}
-        </ul>
+        {this.state.tags.length === 0 && "1. There are no tags"}
+        {this.renderTags()}
       </div>
     );
-    // we are getting a string 'tag' and mapping it to the jsx expression '<li>tag</li>'
-    // which will get compiled to the react element which is plain js object
-
-    // we need to provide a unique key to each element in the list
-    // this is because if the state of this react element changes react needs to quickly
-    // figure out what element is changed and where in the DOM it should make changes
-    // to make the DOM in sync with the virtual DOM.
-    // the key should be unique in this particular list.
-  }
-
-  getBadgeClasses() {
-    let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
-    return classes;
-  }
-
-  formatCount() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
   }
 }
 
