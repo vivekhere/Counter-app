@@ -1,33 +1,26 @@
-// Binding event handlers
+// Updating the state
 
-// Previously this was referencing the window object
-// Due to strict mode being enabled, it showed 'this' as undefined
+// now that we have access to the current object in our event handler it is time to
+// update the value of the count property.
 
 import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 1,
+    count: 0,
   };
 
-  // // Solution 1: using constructor
-  // // In the constructor we have access to this keyword
-  // // so we can make use of the bind method on our handleIncrement function / object
-  // // the bind method will return new instance of the function with 'this' referencing
-  // // to current object
-  // constructor() {
-  //   super();
-  //   this.handleIncrement = this.handleIncrement.bind(this);
-  // }
-
-  // handleIncrement() {
-  //   console.log("Increment Clicked", this);
-  // }
-
-  // Solution 2: Convert the function into arrow function
-  // Arrow functions do not rebind the this keyword; they inherit it
   handleIncrement = () => {
-    console.log("Increment Clicked", this);
+    // this.state.count++;
+    // this will increment the value of count but react is not aware of that and
+    // that is why it is not updating the view
+
+    // we need to explicitly tell react what is changed
+    // Solution
+    this.setState({ count: this.state.count + 1 });
+    // this method tells react that we are updating the state
+    // it will then figure out what part of the state is changed
+    // based on that it will bring the DOM in sync with virtual DOM
   };
 
   render() {
