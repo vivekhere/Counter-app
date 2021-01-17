@@ -1,7 +1,4 @@
-// Composing Components
-
-// Instead of rendering one counter component in index.js we will render the counters
-// component and this will be the wrapper or container of all the counter components
+// Passing data to components
 
 import React, { Component } from "react";
 import Counter from "./counter";
@@ -9,7 +6,7 @@ import Counter from "./counter";
 class Counters extends Component {
   state = {
     counters: [
-      { id: 1, value: 0 },
+      { id: 1, value: 4 },
       { id: 2, value: 0 },
       { id: 3, value: 0 },
       { id: 4, value: 0 },
@@ -20,10 +17,15 @@ class Counters extends Component {
     return (
       <div>
         {this.state.counters.map((counter) => (
-          <Counter key={counter.id} />
+          <Counter key={counter.id} value={counter.value} selected={true} />
         ))}
       </div>
     );
+    // value and selected will be the properties of that props object
+    // key will not be part of that because this is a special attribute for uniquely
+    // identifying elements
+
+    // by default the selected attribute will be set to true so it is redundant here
   }
 }
 
