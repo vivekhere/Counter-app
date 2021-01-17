@@ -1,8 +1,3 @@
-// Passing event arguments
-// Solution 2
-// better approach
-// using inline function
-
 import React, { Component } from "react";
 
 class Counter extends Component {
