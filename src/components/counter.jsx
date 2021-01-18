@@ -4,7 +4,6 @@ class Counter extends Component {
   state = {
     value: this.props.value,
   };
-  // instead of hard coding count to 0 we will get the value from the props
 
   handleIncrement = (product) => {
     console.log(product);
@@ -13,12 +12,10 @@ class Counter extends Component {
 
   render() {
     console.log("props", this.props);
-    // every react element has a property called props
-    // this is basically a plain js object that includes all the attributes that we
-    // set in counters component
 
     return (
       <div>
+        {this.props.children}
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
           onClick={() => this.handleIncrement({ id: 1 })}

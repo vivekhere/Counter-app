@@ -1,4 +1,10 @@
-// Passing data to components
+// Passing children
+
+// The attributes that we set here are passed to our component using a single object
+// called props
+
+// we have a special props called children and we want to use that to pass something
+// between the opening and closing tag of an element
 
 import React, { Component } from "react";
 import Counter from "./counter";
@@ -17,15 +23,12 @@ class Counters extends Component {
     return (
       <div>
         {this.state.counters.map((counter) => (
-          <Counter key={counter.id} value={counter.value} selected={true} />
+          <Counter key={counter.id} value={counter.value} selected={true}>
+            <h4>Counter #{counter.id}</h4>
+          </Counter>
         ))}
       </div>
     );
-    // value and selected will be the properties of that props object
-    // key will not be part of that because this is a special attribute for uniquely
-    // identifying elements
-
-    // by default the selected attribute will be set to true so it is redundant here
   }
 }
 
