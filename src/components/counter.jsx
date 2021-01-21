@@ -1,6 +1,4 @@
-// Single source of truth
-// Removing the local state
-// Refactoring
+// Multiple components in sync
 
 import React, { Component } from "react";
 
