@@ -11,11 +11,22 @@ class Counters extends Component {
     ],
   };
 
+  // Event handler
+  handleDelete = () => {
+    console.log("Event handler called");
+  };
+  // we want to pass a reference to this function using props to our child component
+
   render() {
     return (
       <div>
         {this.state.counters.map((counter) => (
-          <Counter key={counter.id} value={counter.value} id={counter.id} />
+          <Counter
+            key={counter.id}
+            onDelete={this.handleDelete}
+            value={counter.value}
+            id={counter.id}
+          />
         ))}
       </div>
     );
