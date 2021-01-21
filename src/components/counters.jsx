@@ -11,24 +11,40 @@ class Counters extends Component {
     ],
   };
 
-  // to update the state we need to add counterId property so we know which
-  // counter we need to remove from the state
+  handleIncrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value++;
+    this.setState({ counters });
+  };
 
-  // in react we do not update the state directly, we are not going to remove
-  // a counter from the array instead we will create a new array without the given
-  // counter and call the setState method of our component and let react update
-  // the state
   handleDelete = (counterId) => {
     const counters = this.state.counters.filter((c) => c.id !== counterId);
+    this.setState({ counters });
+  };
+
+  handleReset = () => {
+    const counters = this.state.counters.map((c) => {
+      c.value = 0;
+      return c;
+    });
     this.setState({ counters });
   };
 
   render() {
     return (
       <div>
+        <button
+          onClick={this.handleReset}
+          className="btn btn-primary btn-sm m-2"
+        >
+          Reset
+        </button>
         {this.state.counters.map((counter) => (
           <Counter
             key={counter.id}
+            onIncrement={this.handleIncrement}
             onDelete={this.handleDelete}
             counter={counter}
           />
