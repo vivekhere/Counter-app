@@ -1,4 +1,4 @@
-// Multiple components in sync
+// Lifting the state up
 
 import React, { Component } from "react";
 
