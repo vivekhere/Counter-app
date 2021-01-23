@@ -1,5 +1,3 @@
-// Lifting the state up
-
 import React, { Component } from "react";
 
 class Counter extends Component {
