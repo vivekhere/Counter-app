@@ -1,0 +1,37 @@
+Lifecycle Hooks
+
+- There are a few special methods that we can add to our components and react will 
+  automatically call these methods.
+- We refer to these methods as Lifecycle Hooks.
+- So they allow us to hook into certain moments during the lifecycle of a component
+  and do something.
+- Our components go through various phases during their lifecycle.
+
+MOUNT
+
+- The first phase is the mounting phase.
+- This is when an instance of a component is created and inserted into the DOM.
+- In the mounting phase we have 3 lifecycle hooks
+  - constructor
+  - render
+  - componentDidMount
+- React will call these methods in order.
+
+UPDATE
+
+- The second phase is the update phase.
+- This happens when the state or props of a component gets changed.
+- In the update phase we have 2 lifecycle hooks
+  - render
+  - componentDidUpdate
+- So whenever we change the state of our component or give it new props these methods
+  are called in order.
+
+UNMOUNT
+
+- The last phase is the unmounting phase.
+- This is when the component is removed from the DOM
+
+- These lifecycle hooks are frequently used one's
+- In the React documentation there are few more lifecycle hooks but they are 
+  rarely used.
