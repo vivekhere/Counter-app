@@ -5,6 +5,8 @@ Lifecycle Hooks
 - We refer to these methods as Lifecycle Hooks.
 - So they allow us to hook into certain moments during the lifecycle of a component
   and do something.
+- We cannot use lifecycle hooks in Stateless Functional Component. It can only be
+  used in Class Components.
 - Our components go through various phases during their lifecycle.
 
 MOUNT
