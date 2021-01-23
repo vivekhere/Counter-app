@@ -1,27 +1,22 @@
-// Stateless functional components
+// Destructuring arguments
 
-// We only have a single method here - render()
-// there is no event handlers, helper functions
-// there is no state, we are getting all the data via props
-// In situation like this we can convert this component into a
-// Stateless Functional Component
-// instead of using a class to define this component we can use a function
+// Instead of repeating 'props.' or 'this.props.' everywhere we can use object destructuring to
+// get the desired property from the props object
+// this will make the code cleaner
 
-const NavBar = (props) => {
+// React passes the props object to this SFC at runtime
+// we can use object destructuring to get the property totalConters from props
+const NavBar = ({ totalCounters }) => {
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href>
         Vidly
         <span className="badge badge-pill badge-secondary ml-2">
-          {props.totalCounters}
+          {totalCounters}
         </span>
       </a>
     </nav>
   );
 };
-
-// we cannot use this.props as it only works in class components
-// so we need to pass it as an argument
-// React will pass the props object as an argument to this function at runtime
 
 export default NavBar;
