@@ -1,19 +1,22 @@
 import React, { Component } from "react";
 
 class Counter extends Component {
-  // This method is called after a component is updated which means we have
-  // new state or new props.
-  // So we can compare this new state or new props with the old one's and if there
-  // is a change in the state or props we can make a AJAX request to get the new
-  // data from the server or do something.
   componentDidUpdate(prevProps, prevState) {
-    console.log("prevProps", prevProps);
-    console.log("prevState", prevState);
+    // console.log("prevProps", prevProps);
+    // console.log("prevState", prevState);
 
-    // Here we are checking if the new props is different from the previous props
     if (prevProps.counter.value !== this.props.counter.value) {
       // AJAX call and get new data from the server
     }
+  }
+
+  // After the entire component tree is re-rendered we will have a new virtual DOM
+  // React will compare this new virtual DOM it will figure out if something is
+  // removed then it will call componentWillUnmount() before removing anything in
+  // the component and this gives the opportunity for any kind of cleanup that
+  // can be done to avoid memory leaks.
+  componentWillUnmount() {
+    console.log("Counter - Unmount");
   }
 
   render() {

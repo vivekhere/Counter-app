@@ -1,7 +1,7 @@
-// Updating Phase
+// Unmounting Phase
 
-// Update phase happens whenever the state or props of a component changes
-// render() -> componentDidUpdate()
+// componentWillUnmount()
+// This method is called just before a component is removed from the DOM
 
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
@@ -27,9 +27,6 @@ class App extends Component {
     console.log("App - Mounted");
   }
 
-  // In this method we are updating the state of our App component using setState
-  // This will schedule a call to the render method so our App is going to be
-  // rendered which means all it's children are going to be rendered as well
   handleIncrement = (counter) => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
