@@ -1,8 +1,3 @@
-// Unmounting Phase
-
-// componentWillUnmount()
-// This method is called just before a component is removed from the DOM
-
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
 import React, { Component } from "react";
@@ -17,15 +12,6 @@ class App extends Component {
       { id: 4, value: 0 },
     ],
   };
-
-  constructor() {
-    super();
-    console.log("App - Constructor");
-  }
-
-  componentDidMount() {
-    console.log("App - Mounted");
-  }
 
   handleIncrement = (counter) => {
     const counters = [...this.state.counters];
@@ -48,9 +34,15 @@ class App extends Component {
     this.setState({ counters });
   };
 
-  render() {
-    console.log("App - Rendered");
+  handleDecrement = (counter) => {
+    const counters = [...this.state.counters];
+    const index = counters.indexOf(counter);
+    counters[index] = { ...counter };
+    counters[index].value--;
+    this.setState({ counters });
+  };
 
+  render() {
     return (
       <React.Fragment>
         <NavBar
@@ -61,6 +53,7 @@ class App extends Component {
             counters={this.state.counters}
             onReset={this.handleReset}
             onIncrement={this.handleIncrement}
+            onDecrement={this.handleDecrement}
             onDelete={this.handleDelete}
           />
         </main>

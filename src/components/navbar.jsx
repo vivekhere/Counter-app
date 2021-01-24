@@ -2,7 +2,7 @@ const NavBar = ({ totalCounters }) => {
   return (
     <nav className="navbar navbar-light bg-light">
       <a className="navbar-brand" href=".">
-        Vidly
+        Counter
         <span className="badge badge-pill badge-secondary ml-2">
           {totalCounters}
         </span>
