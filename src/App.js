@@ -1,6 +1,7 @@
-// Mounting Phase
+// Updating Phase
 
-// constructor -> render -> componentDidMount
+// Update phase happens whenever the state or props of a component changes
+// render() -> componentDidUpdate()
 
 import NavBar from "./components/navbar";
 import Counters from "./components/counters";
@@ -20,25 +21,15 @@ class App extends Component {
   constructor() {
     super();
     console.log("App - Constructor");
-    // this.state = this.props.something;
-    // we set the state direclty but for this we need to pass props as an argument
-    // to the constructor and the super otherwise it will return undefined
-    // we cannot use this.setState() because it will give an error
-    // it can only be called when a component is rendered and place in DOM.
   }
-  // This constructor is called only once when an instance of class is created.
-  // This is the right place for initialising the properties in this class.
-  // example : we can set the state based on the props that we receive from outside
 
   componentDidMount() {
-    // AJAX call
-    // this.setState({ something })
     console.log("App - Mounted");
   }
-  // This method is called after the component is rendered into the DOM.
-  // When the component is mounted that means that the component is in the DOM.
-  // This is the perfect place to make AJAX calls and get data from the server.
 
+  // In this method we are updating the state of our App component using setState
+  // This will schedule a call to the render method so our App is going to be
+  // rendered which means all it's children are going to be rendered as well
   handleIncrement = (counter) => {
     const counters = [...this.state.counters];
     const index = counters.indexOf(counter);
@@ -60,10 +51,6 @@ class App extends Component {
     this.setState({ counters });
   };
 
-  // The render method will return React element which represents our virual DOM.
-  // Now React will get that DOM and render it in actual browser DOM.
-  // Then the component is mounted.
-  // When a component is rendered all it's children are also rendered recursively.
   render() {
     console.log("App - Rendered");
 
